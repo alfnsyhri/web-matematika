@@ -10,11 +10,13 @@ import { Sejarah } from './pages/profil/Sejarah';
 import { VisiMisi } from './pages/profil/VisiMisi';
 import { Alumni } from './pages/profil/Alumni';
 
-// Akademik
-import { S1Pendidikan } from './pages/programs/S1Pendidikan';
-import { S1Biologi } from './pages/programs/S1Biologi';
-import { S1PendidikanIpa } from './pages/programs/S1PendidikanIpa';
-import { S2Pendidikan } from './pages/programs/S2Pendidikan';
+// Akademik - Program Studi
+import { PendidikanMatematika } from './pages/programs/PendidikanMatematika';
+import { Matematika } from './pages/programs/Matematika';
+import { IlmuKomputer } from './pages/programs/IlmuKomputer';
+import { Statistika } from './pages/programs/Statistika';
+import { S2PendidikanMatematika } from './pages/programs/S2PendidikanMatematika';
+import { S3PendidikanMatematika } from './pages/programs/S3PendidikanMatematika';
 import { Pengaturan } from './pages/akademik/Pengaturan';
 
 // Penelitian & Pengabdian
@@ -23,14 +25,14 @@ import { Pengabdian } from './pages/Pengabdian';
 import { Publikasi } from './pages/Publikasi';
 import { Konferensi } from './pages/Konferensi';
 
-// Lab
+// Lab & Fasilitas
 import { LabA } from './pages/lab/LabA';
 import { LabB } from './pages/lab/LabB';
 import { Sarana } from './pages/lab/Sarana';
 
 // Kemahasiswaan
 import { Kegiatan } from './pages/kemahasiswaan/Kegiatan';
-import { BioKominfo } from './pages/kemahasiswaan/BioKominfo';
+import { Himatika } from './pages/kemahasiswaan/Himatika';
 
 // Informasi
 import { Berita } from './pages/informasi/Berita';
@@ -51,11 +53,15 @@ export default function App() {
           <Route path="/profil/visi-misi" element={<VisiMisi />} />
           <Route path="/profil/alumni" element={<Alumni />} />
 
-          {/* Akademik */}
-          <Route path="/programs/s1-pendidikan" element={<S1Pendidikan />} />
-          <Route path="/programs/s1-biologi" element={<S1Biologi />} />
-          <Route path="/programs/s1-pendidikan-ipa" element={<S1PendidikanIpa />} />
-          <Route path="/programs/s2-pendidikan" element={<S2Pendidikan />} />
+          {/* Akademik - Program Sarjana & Pascasarjana */}
+          <Route path="/programs" element={<PendidikanMatematika />} />
+          <Route path="/programs/pendidikan-matematika" element={<PendidikanMatematika />} />
+          <Route path="/programs/matematika" element={<Matematika />} />
+          <Route path="/programs/ilmu-komputer" element={<IlmuKomputer />} />
+          <Route path="/programs/statistika" element={<Statistika />} />
+          <Route path="/programs/s2-pendidikan-matematika" element={<S2PendidikanMatematika />} />
+          <Route path="/programs/s2-pendidikan" element={<S2PendidikanMatematika />} />
+          <Route path="/programs/s3-pendidikan-matematika" element={<S3PendidikanMatematika />} />
           <Route path="/akademik/pengaturan" element={<Pengaturan />} />
 
           {/* Penelitian & Pengabdian */}
@@ -64,14 +70,15 @@ export default function App() {
           <Route path="/publikasi" element={<Publikasi />} />
           <Route path="/konferensi" element={<Konferensi />} />
 
-          {/* Lab */}
+          {/* Fasilitas */}
           <Route path="/lab/a" element={<LabA />} />
           <Route path="/lab/b" element={<LabB />} />
           <Route path="/lab/sarana" element={<Sarana />} />
 
           {/* Kemahasiswaan */}
           <Route path="/kemahasiswaan/kegiatan" element={<Kegiatan />} />
-          <Route path="/kemahasiswaan/biokominfo" element={<BioKominfo />} />
+          <Route path="/kemahasiswaan/himatika" element={<Himatika />} />
+          <Route path="/kemahasiswaan/biokominfo" element={<Himatika />} />
 
           {/* Informasi */}
           <Route path="/informasi/berita" element={<Berita />} />

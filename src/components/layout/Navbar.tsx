@@ -18,7 +18,7 @@ export const Navbar = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -28,8 +28,8 @@ export const Navbar = () => {
     {
       name: 'Profil',
       children: [
-        { name: 'Sambutan Ketua Program Studi', href: '/profil/sambutan' },
-        { name: 'Sejarah', href: '/profil/sejarah' },
+        { name: 'Sambutan Ketua Jurusan', href: '/profil/sambutan' },
+        { name: 'Sejarah Jurusan', href: '/profil/sejarah' },
         { name: 'Visi & Misi', href: '/profil/visi-misi' },
         { name: 'Staf Pengajar', href: '/faculty' },
         { name: 'Alumni', href: '/profil/alumni' },
@@ -41,49 +41,56 @@ export const Navbar = () => {
         {
           name: 'Program Sarjana',
           children: [
-            { name: 'S1 Pendidikan Biologi', href: '/programs/s1-pendidikan' },
-            { name: 'S1 Biologi', href: '/programs/s1-biologi' },
-            { name: 'S1 Pendidikan IPA', href: '/programs/s1-pendidikan-ipa' },
+            { name: 'S1 Pendidikan Matematika', href: '/programs/pendidikan-matematika' },
+            { name: 'S1 Matematika', href: '/programs/matematika' },
+            { name: 'S1 Ilmu Komputer', href: '/programs/ilmu-komputer' },
+            { name: 'S1 Statistika', href: '/programs/statistika' },
           ]
         },
         {
           name: 'Program Magister',
           children: [
-            { name: 'S2 Pendidikan Biologi', href: '/programs/s2-pendidikan' },
+            { name: 'S2 Pendidikan Matematika', href: '/programs/s2-pendidikan-matematika' },
+          ]
+        },
+        {
+          name: 'Program Pascasarjana',
+          children: [
+            { name: 'S3 Pendidikan Matematika', href: '/programs/s3-pendidikan-matematika' },
           ]
         },
         { name: 'Pengaturan Akademik', href: '/akademik/pengaturan' },
       ]
     },
     {
-      name: 'Penelitian & Pengabdian',
+      name: 'Riset & PkM',
       children: [
-        { name: 'Penelitian', href: '/penelitian' },
-        { name: 'Pengabdian', href: '/pengabdian' },
-        { name: 'Publikasi', href: '/publikasi' },
-        { name: 'Konferensi', href: '/konferensi' },
+        { name: 'Penelitian & Riset', href: '/penelitian' },
+        { name: 'Pengabdian Masyarakat', href: '/pengabdian' },
+        { name: 'Publikasi & Jurnal', href: '/publikasi' },
+        { name: 'Konferensi Ilmiah', href: '/konferensi' },
       ]
     },
     {
-      name: 'Laboratorium',
+      name: 'Fasilitas',
       children: [
-        { name: 'Lab a', href: '/lab/a' },
-        { name: 'Lab b', href: '/lab/b' },
-        { name: 'Sarana dan Fasilitas', href: '/lab/sarana' },
+        { name: 'Lab Komputasi & AI', href: '/lab/a' },
+        { name: 'Lab Statistika & Data', href: '/lab/b' },
+        { name: 'Sarana & Prasarana', href: '/lab/sarana' },
       ]
     },
     {
       name: 'Kemahasiswaan',
       children: [
-        { name: 'Kegiatan Kemahasiswaan', href: '/kemahasiswaan/kegiatan' },
-        { name: 'Bio Kominfo', href: '/kemahasiswaan/biokominfo' },
+        { name: 'Kegiatan Mahasiswa', href: '/kemahasiswaan/kegiatan' },
+        { name: 'HIMATIKA UNIMED', href: '/kemahasiswaan/himatika' },
       ]
     },
     {
-      name: 'Informasi Publik',
+      name: 'Informasi',
       children: [
-        { name: 'Berita', href: '/informasi/berita' },
-        { name: 'Unduh', href: '/informasi/unduh' },
+        { name: 'Berita & Agenda', href: '/informasi/berita' },
+        { name: 'Pusat Unduhan File', href: '/informasi/unduh' },
       ]
     },
   ];
@@ -91,7 +98,7 @@ export const Navbar = () => {
   const isHomePage = location.pathname === '/';
 
   const toggleMobileSubmenu = (name: string) => {
-    setOpenMobileSubmenus(prev => 
+    setOpenMobileSubmenus(prev =>
       prev.includes(name) ? prev.filter(n => n !== name) : [...prev, name]
     );
   };
@@ -108,36 +115,36 @@ export const Navbar = () => {
     const handleMouseLeave = () => {
       timeoutRef.current = setTimeout(() => {
         setIsOpen(false);
-      }, 100);
+      }, 120);
     };
 
     return (
-      <div 
+      <div
         className="relative group/nav"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <button 
+        <button
           className={cn(
             "flex items-center gap-1 text-sm font-medium tracking-wide transition-colors py-2",
-            isScrolled || isHomePage ? "text-white/80 hover:text-white" : "text-primary/70 hover:text-primary",
-            isSubmenu && "w-full justify-between px-4 py-3 hover:bg-light text-primary/80!"
+            isScrolled || isHomePage ? "text-white/85 hover:text-accent" : "text-primary/80 hover:text-primary",
+            isSubmenu && "w-full justify-between px-4 py-3 hover:bg-light hover:text-primary text-primary/80!"
           )}
         >
           {item.name}
-          {item.children && (isSubmenu ? <ChevronRight className="w-4 h-4 opacity-50" /> : <ChevronDown className="w-4 h-4 opacity-50" />)}
+          {item.children && (isSubmenu ? <ChevronRight className="w-4 h-4 opacity-50" /> : <ChevronDown className="w-4 h-4 opacity-50 group-hover/nav:rotate-180 transition-transform duration-200" />)}
         </button>
 
         <AnimatePresence>
           {isOpen && item.children && (
             <motion.div
-              initial={{ opacity: 0, y: isSubmenu ? 0 : 10, x: isSubmenu ? 10 : 0 }}
+              initial={{ opacity: 0, y: isSubmenu ? 0 : 8, x: isSubmenu ? 8 : 0 }}
               animate={{ opacity: 1, y: 0, x: 0 }}
               exit={{ opacity: 0, y: isSubmenu ? 0 : 5, x: isSubmenu ? 5 : 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: 0.18 }}
               className={cn(
-                "absolute bg-white rounded-xl shadow-2xl py-2 min-w-[220px] border border-primary/5 z-[60]",
-                isSubmenu ? "left-full top-0 ml-1" : "top-full left-0 mt-2"
+                "absolute bg-white rounded-2xl shadow-2xl py-2 min-w-[230px] border border-primary/10 z-[60]",
+                isSubmenu ? "left-full top-0 ml-1.5" : "top-full left-0 mt-2"
               )}
             >
               {item.children.map((child) => (
@@ -147,7 +154,7 @@ export const Navbar = () => {
                   ) : (
                     <Link
                       to={child.href!}
-                      className="block px-4 py-3 text-sm text-primary/80 hover:text-primary hover:bg-light transition-colors"
+                      className="block px-4 py-2.5 text-sm text-primary/80 hover:text-primary hover:bg-light/80 hover:border-l-2 hover:border-accent transition-all"
                     >
                       {child.name}
                     </Link>
@@ -165,20 +172,20 @@ export const Navbar = () => {
     <>
       <nav className={cn(
         "fixed top-0 left-0 w-full z-50 transition-all duration-500",
-        isScrolled 
-          ? 'py-4 backdrop-blur-md bg-primary/95 shadow-xl border-b border-white/5' 
-          : 'py-8 bg-transparent'
+        isScrolled
+          ? 'py-3.5 backdrop-blur-md bg-primary/95 shadow-xl border-b border-accent/20'
+          : 'py-6 bg-transparent'
       )}>
         <div className="container mx-auto px-6 flex justify-between items-center">
-          <Link to="/" className="flex items-center gap-2 group">
-            <motion.div 
-              whileHover={{ rotate: 15 }}
-              className="w-14 h-14 flex items-center justify-center"
+          <Link to="/" className="flex items-center gap-3 group">
+            <motion.div
+              whileHover={{ rotate: 10, scale: 1.05 }}
+              className="w-12 h-12 md:w-14 md:h-14 flex items-center justify-center shrink-0"
             >
-              <img 
-                src={logo} 
-                alt="UNIMED Logo" 
-                className="w-full h-full object-contain drop-shadow-sm"
+              <img
+                src={logo}
+                alt="UNIMED Logo"
+                className="w-full h-full object-contain drop-shadow-md"
                 onError={(e) => {
                   e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Logo_Unimed.png";
                 }}
@@ -189,12 +196,14 @@ export const Navbar = () => {
                 "text-2xl font-display font-bold tracking-tight transition-colors",
                 isScrolled || isHomePage ? "text-white" : "text-primary"
               )}>
-                Bio <span className="text-accent">·</span> UNIMED
+                Math <span className="text-accent">·</span> UNIMED
               </span>
               <span className={cn(
-                "text-[10px] uppercase tracking-[0.2em] font-mono -mt-1",
-                isScrolled || isHomePage ? "text-white/50" : "text-primary/40"
-              )}>Jurusan Biologi</span>
+                "text-[10px] uppercase tracking-[0.25em] font-mono -mt-1 font-semibold",
+                isScrolled || isHomePage ? "text-accent/90" : "text-secondary"
+              )}>
+                Jurusan Matematika FMIPA
+              </span>
             </div>
           </Link>
 
@@ -205,13 +214,13 @@ export const Navbar = () => {
                 {link.children ? (
                   <DesktopDropdown item={link} isScrolled={isScrolled} isHomePage={isHomePage} />
                 ) : (
-                  <Link 
+                  <Link
                     to={link.href!}
                     className={cn(
                       "relative text-sm font-medium tracking-wide transition-colors group py-2",
-                      location.pathname === link.href 
-                        ? "text-accent" 
-                        : (isScrolled || isHomePage ? "text-white/80 hover:text-white" : "text-primary/70 hover:text-primary")
+                      location.pathname === link.href
+                        ? "text-accent font-semibold"
+                        : (isScrolled || isHomePage ? "text-white/85 hover:text-white" : "text-primary/70 hover:text-primary")
                     )}
                   >
                     {link.name}
@@ -223,13 +232,13 @@ export const Navbar = () => {
                 )}
               </div>
             ))}
-            <Link 
+            <Link
               to="/contact"
               className={cn(
-                "px-5 py-2 font-bold rounded-full text-xs shadow-lg transition-all hover:scale-105 active:scale-95 ml-4",
-                isScrolled || isHomePage 
-                  ? "bg-accent text-primary shadow-accent/20" 
-                  : "bg-primary text-white shadow-primary/20"
+                "px-6 py-2.5 font-bold rounded-full text-xs shadow-lg transition-all hover:scale-105 active:scale-95 ml-3 border",
+                isScrolled || isHomePage
+                  ? "bg-accent text-primary border-accent-light/40 shadow-accent/20 hover:bg-accent-light"
+                  : "bg-primary text-white border-primary shadow-primary/20 hover:bg-secondary"
               )}
             >
               Hubungi Kami
@@ -237,78 +246,82 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Toggle */}
-          <button 
+          <button
             className={cn(
               "lg:hidden p-2 hover:bg-white/10 rounded-full transition-colors",
               isScrolled || isHomePage ? "text-white" : "text-primary"
             )}
             onClick={() => setMobileMenuOpen(true)}
-            aria-label="Open menu"
+            aria-label="Buka menu navigasi"
           >
-            <Menu className="w-8 h-8" />
+            <Menu className="w-7 h-7" />
           </button>
         </div>
       </nav>
 
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: "100%" }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: "100%" }}
-            transition={{ type: "spring", damping: 35, stiffness: 300 }}
-            className="fixed inset-0 z-[101] bg-primary flex flex-col p-8 overflow-y-auto w-screen h-screen"
+            transition={{ type: "spring", damping: 32, stiffness: 280 }}
+            className="fixed inset-0 z-[101] bg-primary flex flex-col p-8 overflow-y-auto w-screen h-screen border-l border-accent/20"
           >
-            <div className="flex justify-between items-center mb-10">
+            <div className="flex justify-between items-center mb-8 pb-4 border-b border-white/10">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 flex items-center justify-center">
-                  <img 
-                    src={logo} 
-                    alt="Logo" 
-                    className="w-full h-full object-contain" 
+                <div className="w-11 h-11 flex items-center justify-center">
+                  <img
+                    src={logo}
+                    alt="Logo UNIMED"
+                    className="w-full h-full object-contain"
                     onError={(e) => { e.currentTarget.src = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Logo_Unimed.png"; }}
                   />
                 </div>
-                <span className="text-xl font-display font-bold text-white tracking-tight">Bio · UNIMED</span>
+                <div>
+                  <span className="text-xl font-display font-bold text-white tracking-tight block">Math · UNIMED</span>
+                  <span className="text-[10px] uppercase font-mono text-accent tracking-widest">Jurusan Matematika</span>
+                </div>
               </div>
-              <button 
-                className="text-white p-2 hover:bg-white/10 rounded-full transition-colors " 
-                onClick={() => setMobileMenuOpen(false)} 
+              <button
+                className="text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Tutup menu"
               >
-                <X className="w-8 h-8" />
+                <X className="w-7 h-7" />
               </button>
             </div>
-            
-            <div className="flex flex-col gap-4">
+
+            <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
-                <div key={link.name} className="flex flex-col border-b border-white/5 pb-4 last:border-0 last:pb-0">
+                <div key={link.name} className="flex flex-col border-b border-white/5 pb-3 last:border-0 last:pb-0">
                   {link.children ? (
                     <>
-                      <button 
+                      <button
                         onClick={() => toggleMobileSubmenu(link.name)}
-                        className="flex items-center justify-between text-2xl font-display font-bold text-white py-2"
+                        className="flex items-center justify-between text-xl font-display font-bold text-white py-2"
                       >
                         {link.name}
-                        <ChevronDown className={cn("w-6 h-6 transition-transform", openMobileSubmenus.includes(link.name) && "rotate-180")} />
+                        <ChevronDown className={cn("w-5 h-5 text-accent transition-transform", openMobileSubmenus.includes(link.name) && "rotate-180")} />
                       </button>
                       <AnimatePresence>
                         {openMobileSubmenus.includes(link.name) && (
-                          <motion.div 
+                          <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: "auto", opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
-                            className="flex flex-col gap-3 pl-4 pt-2 overflow-hidden"
+                            className="flex flex-col gap-2.5 pl-4 pt-2 overflow-hidden"
                           >
                             {link.children.map((child) => (
                               <div key={child.name}>
                                 {child.children ? (
                                   <>
-                                    <button 
+                                    <button
                                       onClick={() => toggleMobileSubmenu(child.name)}
-                                      className="flex items-center justify-between text-lg font-medium text-white/70 py-1 w-full"
+                                      className="flex items-center justify-between text-base font-medium text-white/80 py-1 w-full"
                                     >
                                       {child.name}
-                                      <ChevronDown className={cn("w-4 h-4 transition-transform", openMobileSubmenus.includes(child.name) && "rotate-180")} />
+                                      <ChevronDown className={cn("w-4 h-4 text-accent transition-transform", openMobileSubmenus.includes(child.name) && "rotate-180")} />
                                     </button>
                                     <AnimatePresence>
                                       {openMobileSubmenus.includes(child.name) && (
@@ -322,7 +335,7 @@ export const Navbar = () => {
                                             <Link
                                               key={grandChild.name}
                                               to={grandChild.href!}
-                                              className="text-white/50 py-1"
+                                              className="text-white/60 hover:text-accent py-1 text-sm transition-colors"
                                               onClick={() => setMobileMenuOpen(false)}
                                             >
                                               {grandChild.name}
@@ -333,9 +346,9 @@ export const Navbar = () => {
                                     </AnimatePresence>
                                   </>
                                 ) : (
-                                  <Link 
+                                  <Link
                                     to={child.href!}
-                                    className="text-lg font-medium text-white/70 py-1 inline-block"
+                                    className="text-base font-medium text-white/80 hover:text-accent py-1 inline-block transition-colors"
                                     onClick={() => setMobileMenuOpen(false)}
                                   >
                                     {child.name}
@@ -348,10 +361,10 @@ export const Navbar = () => {
                       </AnimatePresence>
                     </>
                   ) : (
-                    <Link 
+                    <Link
                       to={link.href!}
                       className={cn(
-                        "text-2xl font-display font-bold py-2",
+                        "text-xl font-display font-bold py-2 transition-colors",
                         location.pathname === link.href ? "text-accent" : "text-white"
                       )}
                       onClick={() => setMobileMenuOpen(false)}
@@ -361,11 +374,11 @@ export const Navbar = () => {
                   )}
                 </div>
               ))}
-              
-              <Link 
+
+              <Link
                 to="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-8 py-4 bg-accent text-primary font-bold rounded-xl text-center text-lg block shadow-2xl shadow-accent/20"
+                className="mt-6 py-4 bg-accent text-primary font-bold rounded-2xl text-center text-base block shadow-xl hover:bg-accent-light transition-colors"
               >
                 Hubungi Kami
               </Link>

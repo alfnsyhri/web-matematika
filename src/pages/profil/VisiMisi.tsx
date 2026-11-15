@@ -3,7 +3,7 @@ import { ContentPage } from '../PlaceholderPage';
 export const VisiMisi = () => (
   <ContentPage 
     title="Visi & Misi"
-    subtitle="Arah dan tujuan strategis Jurusan Biologi UNIMED dalam mewujudkan keunggulan di bidang pendidikan dan riset biologi."
+    subtitle="Arah dan tujuan strategis Jurusan Matematika UNIMED dalam mewujudkan keunggulan di bidang pendidikan, riset, dan komputasi."
   >
     <div className="space-y-16">
       <div className="bg-primary text-white p-12 md:p-16 rounded-[4rem] shadow-2xl relative overflow-hidden text-center">
@@ -12,7 +12,7 @@ export const VisiMisi = () => (
         </div>
         <h3 className="text-sm font-mono tracking-[0.4em] uppercase text-accent mb-8">Visi Jurusan</h3>
         <p className="text-3xl md:text-5xl font-display font-bold leading-tight italic">
-          "Menjadi Jurusan Biologi yang <span className="text-accent underline decoration-white/20">Unggul</span> dalam Bidang Pendidikan dan Riset Biologi Berbasis Kekayaan Alam Sumatera Utama pada Tahun 2030."
+          "Menjadi Jurusan Matematika yang <span className="text-accent underline decoration-white/20">Unggul</span> dalam Pendidikan, Riset, dan Inovasi Berbasis Matematika dan Teknologi pada Tahun 2030."
         </p>
       </div>
 
@@ -24,10 +24,10 @@ export const VisiMisi = () => (
           </div>
           <div className="space-y-6">
             {[
-              "Menyelenggarakan pendidikan biologi yang bermutu tinggi untuk menghasilkan lulusan yang kompeten dan kompetitif.",
-              "Melakukan riset inovatif di bidang biologi dan kependidikan biologi yang bermanfaat bagi masyarakat.",
-              "Melaksanakan pengabdian kepada masyarakat berbasis hasil riset untuk peningkatan kesejahteraan.",
-              "Menjalin kerjasama strategis dengan berbagai lembaga di tingkat lokal, nasional, dan internasional."
+              "Menyelenggarakan pendidikan matematika yang bermutu tinggi untuk menghasilkan lulusan yang kompeten dan berdaya saing global.",
+              "Melakukan riset inovatif di bidang matematika, ilmu komputer, dan statistika yang bermanfaat bagi masyarakat dan industri.",
+              "Melaksanakan pengabdian kepada masyarakat berbasis hasil riset untuk peningkatan kualitas pendidikan dan kesejahteraan.",
+              "Menjalin kerjasama strategis dengan industri teknologi, lembaga riset, dan universitas di tingkat lokal, nasional, dan internasional."
             ].map((misi, i) => (
               <div key={i} className="flex gap-6 group">
                 <span className="w-10 h-10 shrink-0 bg-neutral text-primary flex items-center justify-center rounded-full font-bold group-hover:bg-accent transition-colors">{i+1}</span>
@@ -45,10 +45,10 @@ export const VisiMisi = () => (
           <div className="bg-neutral p-10 rounded-[3rem] border border-primary/5">
             <ul className="space-y-6">
               {[
-                "Meningkatkan kualitas pembelajaran melalui integrasi IT.",
-                "Mendorong publikasi ilmiah di jurnal bereputasi tinggi.",
-                "Memperluas jaringan kemitraan dengan industri dan LSM.",
-                "Mengoptimalkan peran alumni dalam pengembangan institusi."
+                "Meningkatkan kualitas pembelajaran melalui integrasi teknologi dan komputasi.",
+                "Mendorong publikasi ilmiah di jurnal bereputasi tinggi di bidang matematika dan ilmu komputer.",
+                "Memperluas jaringan kemitraan dengan industri teknologi dan perusahaan data.",
+                "Mengoptimalkan peran alumni dalam pengembangan ekosistem digital dan pendidikan."
               ].map((goal, i) => (
                 <li key={i} className="flex items-center gap-4 text-primary/70">
                   <div className="w-2 h-2 bg-accent rounded-full" />

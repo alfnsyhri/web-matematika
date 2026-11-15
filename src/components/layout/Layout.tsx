@@ -3,49 +3,50 @@ import { Navbar } from './Navbar';
 import { Footer } from './Footer';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLocation } from 'react-router-dom';
-import logo from '../../assets/logo.png';
 
-const logoFallback = "https://upload.wikimedia.org/wikipedia/commons/e/e0/Logo_Unimed.png";
+// Loading bar polos & bersih dari kiri ke kanan (seperti YouTube / GitHub)
+// Warna mengikuti nuansa hijau - kuning emas tema Jurusan Matematika
+const TopLoadingBar = () => {
+  const { pathname } = useLocation();
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
 
-const SplashScreen = () => (
-  <motion.div 
-    className="fixed inset-0 z-[200] bg-primary flex flex-col items-center justify-center pointer-events-none"
-    initial={{ opacity: 1 }}
-    animate={{ opacity: 0 }}
-    transition={{ duration: 0.8, delay: 2.0, ease: "easeInOut" }}
-  >
-    <motion.div
-      initial={{ scale: 0.5, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      className="flex flex-col items-center gap-6"
-    >
-      <div className="w-40 h-40 flex items-center justify-center">
-        <img 
-          src={logo} 
-          alt="UNIMED Logo" 
-          className="w-full h-full object-contain"
-          onError={(e) => {
-            e.currentTarget.src = logoFallback;
-          }}
-        />
-      </div>
-      <h1 className="text-white text-4xl font-display font-bold tracking-tight text-center">
-        Biologi <span className="text-accent underline underline-offset-8">UNIMED</span>
-      </h1>
-      <motion.div 
-        className="h-1 w-32 bg-white/20 rounded-full overflow-hidden mt-4"
-      >
-        <motion.div 
-          className="h-full bg-accent"
-          initial={{ width: 0 }}
-          animate={{ width: "100%" }}
-          transition={{ duration: 1.2, ease: "easeInOut" }}
-        />
-      </motion.div>
-    </motion.div>
-  </motion.div>
-);
+  useEffect(() => {
+    // Jalankan garis loading dari kiri ke kanan saat load atau pindah halaman
+    setVisible(true);
+    setProgress(25);
+
+    const step1 = setTimeout(() => setProgress(70), 120);
+    const step2 = setTimeout(() => setProgress(100), 300);
+    const step3 = setTimeout(() => {
+      setVisible(false);
+      setProgress(0);
+    }, 550);
+
+    return () => {
+      clearTimeout(step1);
+      clearTimeout(step2);
+      clearTimeout(step3);
+    };
+  }, [pathname]);
+
+  if (!visible && progress === 0) return null;
+
+  return (
+    <div className="fixed top-0 left-0 right-0 h-[3px] z-[9999] pointer-events-none bg-transparent">
+      <div 
+        className="h-full bg-gradient-to-r from-secondary via-accent to-accent-light shadow-[0_0_8px_rgba(212,163,34,0.6)]"
+        style={{ 
+          width: `${progress}%`,
+          opacity: progress === 100 ? 0 : 1,
+          transition: progress === 100 
+            ? 'width 0.2s ease-out, opacity 0.25s ease 0.1s' 
+            : 'width 0.2s ease-out'
+        }}
+      />
+    </div>
+  );
+};
 
 export const Layout = ({ children }: { children: ReactNode }) => {
   const { pathname } = useLocation();
@@ -56,16 +57,16 @@ export const Layout = ({ children }: { children: ReactNode }) => {
 
   return (
     <div className="relative min-h-screen">
-      <SplashScreen />
+      <TopLoadingBar />
       <Navbar />
       <main>
         <AnimatePresence mode="wait">
           <motion.div
             key={pathname}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.4 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2 }}
           >
             {children}
           </motion.div>

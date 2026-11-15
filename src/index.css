@@ -1,14 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display&family=DM+Sans:wght@400;500;700&family=Space+Mono&family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #1B4D2E;
-  --color-secondary: #2D7A4F;
-  --color-accent: #7EC850;
-  --color-light: #EAF5E3;
-  --color-neutral: #F5F0E8;
-  --color-dark: #0D2318;
-  --color-gold: #C8A84B;
+  /* Hijau tua akademis nan mewah (Royal Emerald Forest) */
+  --color-primary: #12372A;
+  /* Hijau medium elegan */
+  --color-secondary: #1F543D;
+  /* Kuning emas klasik kerajaan (Florentine Gold) - anggun, hangat, tidak gonjreng/alay */
+  --color-accent: #D4A322;
+  /* Varian emas muda untuk highlight lembut */
+  --color-accent-light: #F3D985;
+  /* Background hijau sangat lembut nan sejuk */
+  --color-light: #F0F6F1;
+  /* Background krem kertas perkamen mewah */
+  --color-neutral: #FAF8F2;
+  /* Nuansa gelap hutan malam */
+  --color-dark: #0A1E17;
+  /* Gold solid */
+  --color-gold: #D4A322;
 
   --font-display: "Playfair Display", serif;
   --font-subheading: "DM Serif Display", serif;
@@ -19,7 +28,7 @@
 
 @layer base {
   body {
-    @apply bg-neutral text-dark font-sans selection:bg-accent/30;
+    @apply bg-neutral text-dark font-sans selection:bg-accent/25 selection:text-primary;
   }
 }
 
@@ -29,32 +38,55 @@
   }
   
   .glass-nav {
-    @apply backdrop-blur-md bg-primary/80;
+    @apply backdrop-blur-md bg-primary/90 border-b border-accent/15;
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-secondary to-accent;
+  }
+
+  .text-gold-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent-light to-accent;
+  }
+
+  .gold-border {
+    border-color: rgba(212, 163, 34, 0.25);
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 25px -5px rgba(212, 163, 34, 0.2);
   }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 7px;
 }
 ::-webkit-scrollbar-track {
   @apply bg-light;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-primary rounded-full hover:bg-secondary transition-colors;
+  @apply bg-secondary/70 rounded-full hover:bg-primary transition-colors;
 }
 
 @keyframes float {
   0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(5deg); }
+  50% { transform: translateY(-16px) rotate(3deg); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .animate-float {
-  animation: float 6s ease-in-out infinite;
+  animation: float 7s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(212,163,34,0.18), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2.5s infinite;
 }
 
 .markdown-body {
@@ -73,8 +105,8 @@
   @apply list-decimal;
 }
 .markdown-body strong {
-  @apply font-bold;
+  @apply font-bold text-primary;
 }
 .markdown-body code {
-  @apply bg-black/10 px-1 rounded font-mono text-xs;
+  @apply bg-primary/10 text-primary px-1.5 py-0.5 rounded font-mono text-xs;
 }

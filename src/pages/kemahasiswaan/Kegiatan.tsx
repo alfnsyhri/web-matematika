@@ -3,21 +3,22 @@ import { ContentPage } from '../PlaceholderPage';
 export const Kegiatan = () => (
   <ContentPage 
     title="Kegiatan Kemahasiswaan"
-    subtitle="Wadah pengembangan soft skills, organisasi, dan kreativitas mahasiswa Biologi UNIMED."
+    subtitle="Wadah pengembangan soft skills, organisasi, dan kreativitas mahasiswa Jurusan Matematika UNIMED."
   >
     <div className="space-y-12">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         <div className="space-y-6">
-           <h3 className="text-3xl font-display font-bold text-primary italic">HMJ Biologi</h3>
+           <h3 className="text-3xl font-display font-bold text-primary italic">HIMATIKA</h3>
            <p className="text-primary/70 leading-relaxed">
-             Himpunan Mahasiswa Jurusan (HMJ) Biologi adalah organisasi kemahasiswaan tertinggi di tingkat jurusan. HMJ berfungsi sebagai jembatan aspirasi dan penyelenggara berbagai kegiatan akademik maupun non-akademik.
+             Himpunan Mahasiswa Matematika (HIMATIKA) adalah organisasi kemahasiswaan tertinggi di tingkat jurusan. HIMATIKA berfungsi sebagai jembatan aspirasi dan penyelenggara berbagai kegiatan akademik, kompetisi, maupun pengembangan non-akademik mahasiswa matematika.
            </p>
            <div className="p-6 bg-white rounded-3xl border border-primary/5 shadow-sm">
-             <h4 className="font-bold text-accent mb-2">Program Unggulan HMJ:</h4>
+             <h4 className="font-bold text-accent mb-2">Program Unggulan HIMATIKA:</h4>
              <ul className="text-sm text-primary/60 space-y-2">
-               <li>• Biology Exhibition (BEX)</li>
-               <li>• Bina Desa Mahasiswa</li>
+               <li>• Math Olympiad Festival (MOF)</li>
+               <li>• Seminar Nasional Matematika & Komputer</li>
                <li>• Pelatihan Kepemimpinan (LDK)</li>
+               <li>• Coding Camp & Hackathon Internal</li>
              </ul>
            </div>
         </div>
