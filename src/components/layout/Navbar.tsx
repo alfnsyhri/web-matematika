@@ -54,7 +54,7 @@ export const Navbar = () => {
           ]
         },
         {
-          name: 'Program Pascasarjana',
+          name: 'Program Doktor',
           children: [
             { name: 'S3 Pendidikan Matematika', href: '/programs/s3-pendidikan-matematika' },
           ]
