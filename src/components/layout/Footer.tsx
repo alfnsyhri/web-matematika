@@ -50,6 +50,7 @@ export const Footer = () => {
               <li><Link to="/profil/sambutan" className="hover:text-accent transition-colors">Sambutan Ketua Jurusan</Link></li>
               <li><Link to="/profil/sejarah" className="hover:text-accent transition-colors">Sejarah</Link></li>
               <li><Link to="/profil/visi-misi" className="hover:text-accent transition-colors">Visi & Misi</Link></li>
+              <li><Link to="/profil/struktur-organisasi" className="hover:text-accent transition-colors">Struktur Organisasi</Link></li>
               <li><Link to="/faculty" className="hover:text-accent transition-colors">Staf Pengajar</Link></li>
               <li><Link to="/profil/alumni" className="hover:text-accent transition-colors">Alumni (IKAMATA)</Link></li>
             </ul>

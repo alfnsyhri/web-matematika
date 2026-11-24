@@ -31,6 +31,7 @@ export const Navbar = () => {
         { name: 'Sambutan Ketua Jurusan', href: '/profil/sambutan' },
         { name: 'Sejarah Jurusan', href: '/profil/sejarah' },
         { name: 'Visi & Misi', href: '/profil/visi-misi' },
+        { name: 'Struktur Organisasi', href: '/profil/struktur-organisasi' },
         { name: 'Staf Pengajar', href: '/faculty' },
         { name: 'Alumni', href: '/profil/alumni' },
       ]

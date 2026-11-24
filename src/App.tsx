@@ -8,6 +8,7 @@ import { Contact } from './pages/Contact';
 import { Sambutan } from './pages/profil/Sambutan';
 import { Sejarah } from './pages/profil/Sejarah';
 import { VisiMisi } from './pages/profil/VisiMisi';
+import { StrukturOrganisasi } from './pages/profil/StrukturOrganisasi';
 import { Alumni } from './pages/profil/Alumni';
 
 // Akademik - Program Studi
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="/profil/sambutan" element={<Sambutan />} />
           <Route path="/profil/sejarah" element={<Sejarah />} />
           <Route path="/profil/visi-misi" element={<VisiMisi />} />
+          <Route path="/profil/struktur-organisasi" element={<StrukturOrganisasi />} />
           <Route path="/profil/alumni" element={<Alumni />} />
 
           {/* Akademik - Program Sarjana & Pascasarjana */}
