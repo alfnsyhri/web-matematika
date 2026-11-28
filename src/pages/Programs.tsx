@@ -45,7 +45,7 @@ const programDetails: Record<ProgramKey, {
     icon: Monitor,
     title: 'Menguasai Algoritma, AI & Software Engineering',
     description: 'Mencetak software engineer, data scientist, dan arsitek sistem digital yang siap memimpin revolusi teknologi kecerdasan buatan.',
-    link: '/programs/ilmu-komputer',
+    link: 'https://csunimed.com/',
     stages: [
       { sem: 'Semester 1-2', subjects: ['Algoritma & Pemrograman', 'Matematika Diskrit', 'Struktur Data', 'Arsitektur Komputer'] },
       { sem: 'Semester 3-4', subjects: ['Basis Data', 'Pemrograman Berorientasi Objek', 'Jaringan Komputer', 'Desain Web & UI/UX'] },
@@ -136,13 +136,25 @@ export const Programs = () => {
             </div>
 
             <div className="pt-2">
-              <Link
-                to={activeProg.link}
-                className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-secondary transition-all shadow-md text-sm"
-              >
-                Kunjungi Halaman Detail Prodi
-                <span className="text-accent">→</span>
-              </Link>
+              {activeProg.link.startsWith('http') ? (
+                <a
+                  href={activeProg.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-secondary transition-all shadow-md text-sm"
+                >
+                  Kunjungi Website Resmi CS UNIMED
+                  <span className="text-accent">→</span>
+                </a>
+              ) : (
+                <Link
+                  to={activeProg.link}
+                  className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white font-bold rounded-full hover:bg-secondary transition-all shadow-md text-sm"
+                >
+                  Kunjungi Halaman Detail Prodi
+                  <span className="text-accent">→</span>
+                </Link>
+              )}
             </div>
           </motion.div>
 

@@ -239,7 +239,7 @@ export const Home = () => {
                 title: 'Ilmu Komputer', 
                 badge: 'Jenjang S1',
                 desc: 'Kuasai rekayasa perangkat lunak, arsitektur sistem, algoritma cerdas, dan kecerdasan buatan (Artificial Intelligence).', 
-                link: '/programs/ilmu-komputer', 
+                link: 'https://csunimed.com/', 
                 icon: Monitor,
               },
               { 
@@ -273,13 +273,25 @@ export const Home = () => {
                     {item.desc}
                   </p>
                 </div>
-                <Link 
-                  to={item.link} 
-                  className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors pt-4 border-t border-light"
-                >
-                  Pelajari Kurikulum
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+                {item.link.startsWith('http') ? (
+                  <a 
+                    href={item.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors pt-4 border-t border-light"
+                  >
+                    Kunjungi Website Resmi
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                ) : (
+                  <Link 
+                    to={item.link} 
+                    className="flex items-center gap-2 text-xs font-mono font-bold uppercase tracking-widest text-primary group-hover:text-accent transition-colors pt-4 border-t border-light"
+                  >
+                    Pelajari Kurikulum
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                )}
               </motion.div>
             ))}
           </div>

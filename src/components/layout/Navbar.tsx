@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronDown, ChevronRight, ArrowUpRight } from 'lucide-react';
 import { cn } from '@/src/lib/utils';
 import logo from '../../assets/logo.png';
 
@@ -44,7 +44,7 @@ export const Navbar = () => {
           children: [
             { name: 'S1 Pendidikan Matematika', href: '/programs/pendidikan-matematika' },
             { name: 'S1 Matematika', href: '/programs/matematika' },
-            { name: 'S1 Ilmu Komputer', href: '/programs/ilmu-komputer' },
+            { name: 'S1 Ilmu Komputer', href: 'https://csunimed.com/' },
             { name: 'S1 Statistika', href: '/programs/statistika' },
           ]
         },
@@ -152,6 +152,16 @@ export const Navbar = () => {
                 <div key={child.name}>
                   {child.children ? (
                     <DesktopDropdown item={child} isSubmenu isScrolled={isScrolled} isHomePage={isHomePage} />
+                  ) : child.href?.startsWith('http') ? (
+                    <a
+                      href={child.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between px-4 py-2.5 text-sm text-primary/80 hover:text-primary hover:bg-light/80 hover:border-l-2 hover:border-accent transition-all"
+                    >
+                      <span>{child.name}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-accent opacity-70" />
+                    </a>
                   ) : (
                     <Link
                       to={child.href!}
@@ -333,14 +343,28 @@ export const Navbar = () => {
                                           className="flex flex-col gap-2 pl-4 pt-1 overflow-hidden"
                                         >
                                           {child.children.map((grandChild) => (
-                                            <Link
-                                              key={grandChild.name}
-                                              to={grandChild.href!}
-                                              className="text-white/60 hover:text-accent py-1 text-sm transition-colors"
-                                              onClick={() => setMobileMenuOpen(false)}
-                                            >
-                                              {grandChild.name}
-                                            </Link>
+                                            grandChild.href?.startsWith('http') ? (
+                                              <a
+                                                key={grandChild.name}
+                                                href={grandChild.href}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="text-white/60 hover:text-accent py-1 text-sm transition-colors flex items-center justify-between"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                              >
+                                                <span>{grandChild.name}</span>
+                                                <ArrowUpRight className="w-3.5 h-3.5 text-accent opacity-70" />
+                                              </a>
+                                            ) : (
+                                              <Link
+                                                key={grandChild.name}
+                                                to={grandChild.href!}
+                                                className="text-white/60 hover:text-accent py-1 text-sm transition-colors"
+                                                onClick={() => setMobileMenuOpen(false)}
+                                              >
+                                                {grandChild.name}
+                                              </Link>
+                                            )
                                           ))}
                                         </motion.div>
                                       )}

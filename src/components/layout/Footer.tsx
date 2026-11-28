@@ -64,7 +64,7 @@ export const Footer = () => {
                 <ul className="space-y-1.5 pl-2 border-l border-white/10">
                   <li><Link to="/programs/pendidikan-matematika" className="hover:text-accent transition-colors block">S1 Pendidikan Matematika</Link></li>
                   <li><Link to="/programs/matematika" className="hover:text-accent transition-colors block">S1 Matematika</Link></li>
-                  <li><Link to="/programs/ilmu-komputer" className="hover:text-accent transition-colors block">S1 Ilmu Komputer</Link></li>
+                  <li><a href="https://csunimed.com/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors block">S1 Ilmu Komputer</a></li>
                   <li><Link to="/programs/statistika" className="hover:text-accent transition-colors block">S1 Statistika</Link></li>
                 </ul>
               </div>
